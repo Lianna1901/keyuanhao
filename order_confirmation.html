@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>订单确认</title>
+    <style>
+        body {
+            font-family: Arial, "Microsoft YaHei", sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+            header img {
+                height: 60px;
+                margin-right: 20px;
+            }
+
+        nav {
+            margin-left: auto;
+        }
+
+            nav a {
+                color: black;
+                text-decoration: none;
+                margin: 0 10px;
+                font-weight: bold;
+            }
+
+        .main-title {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+            .main-title h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+            .main-title p {
+                margin: 0;
+                color: red;
+                font-size: 16px;
+            }
+
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .qr-code {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .qr-code img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .qr-code p {
+                font-size: 18px;
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="E:\VScode_project\jianbian\logo\客源号logo.png" alt="Logo">
+        <nav>
+            <a href="index.html">首页</a>
+            <a href="#">订单查询</a>
+        </nav>
+    </header>
+    <div class="main-title">
+        <h1>外贸精准客源号</h1>
+        <p>有号就可以卖产品，不开单可退，订单量不满意可退。</p>
+    </div>
+    <div class="container">
+        <h2>订单确认</h2>
+        <p>订单号: <span id="orderNumber"></span></p>
+        <p>订单详情: <span id="orderDetails"></span></p>
+        <p>价格: <span id="orderPrice"></span> USDT</p>
+        <p>下单邮箱: <span id="orderEmail"></span></p>
+        <p>支付方式: USDT-TRC20</p>
+        <p>下单时间: <span id="orderTime"></span></p>
+        <a href="#" class="btn" onclick="confirmPayment()">立即支付</a>
+        <div class="qr-code" id="qrCode" style="display: none;">
+            <p>TYUmXuBbi4RPADaQrLLD3CVrPJJkmr73hH</p>
+            <img src="E:\VScode_project\jianbian\logo\usdt.jpg" alt="USDT QR Code">
+        </div>
+    </div>
+    <script>
+        function confirmPayment() {
+            alert('请打开钱包首页扫码付款，仅支持TRC链付款。');
+            document.getElementById('qrCode').style.display = 'block';
+        }
+
+        // 获取URL中的参数并填充订单信息
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById('orderNumber').innerText = urlParams.get('orderNumber');
+            document.getElementById('orderDetails').innerText = urlParams.get('orderDetails');
+            document.getElementById('orderPrice').innerText = parseFloat(urlParams.get('orderPrice')).toFixed(2);
+            document.getElementById('orderEmail').innerText = urlParams.get('orderEmail');
+            document.getElementById('orderTime').innerText = urlParams.get('orderTime');
+        }
+    </script>
+</body>
+</html>
