@@ -202,6 +202,16 @@
             margin: 10px 0 20px;
             font-size: 24px;
         }
+
+        .source-counts {
+            margin-top: 15px;
+        }
+
+            .source-counts .form-group {
+                display: inline-block;
+                width: calc(100% - 10px);
+                margin-right: 10px;
+            }
     </style>
 </head>
 <body>
@@ -279,16 +289,7 @@
                     </div>
                     <div class="selected-industries" id="selectedIndustriesWhatsApp"></div>
                 </div>
-                <div class="form-group">
-                    <label for="sourceCountWhatsApp">客源数:</label>
-                    <select id="sourceCountWhatsApp" name="sourceCountWhatsApp" onchange="updatePriceWhatsApp()">
-                        <option value="100-200">100-200</option>
-                        <option value="200-400">200-400</option>
-                        <option value="400-600">400-600</option>
-                        <option value="600-800">600-800</option>
-                        <option value="800-1000">800-1000</option>
-                    </select>
-                </div>
+                <div class="source-counts" id="sourceCountsWhatsApp"></div>
                 <p>价格: <span id="priceWhatsApp">50.00</span> USDT</p>
                 <button type="button" class="btn" onclick="generateOrderWhatsApp()">下单</button>
             </form>
@@ -376,9 +377,11 @@
         function updateSelectedIndustries(platform) {
             const selectedIndustriesDiv = document.getElementById(`selectedIndustries${platform}`);
             selectedIndustriesDiv.innerHTML = '';
+            const sourceCountsDiv = document.getElementById(`sourceCounts${platform}`);
+            sourceCountsDiv.innerHTML = '';
 
             const selectedCheckboxes = document.querySelectorAll(`#checkboxes${platform} input[type="checkbox"]:checked`);
-            selectedCheckboxes.forEach(checkbox => {
+            selectedCheckboxes.forEach((checkbox, index) => {
                 const industry = checkbox.value;
                 const industryDiv = document.createElement('div');
 
@@ -399,32 +402,58 @@
                 industryDiv.appendChild(groupCountLabel);
 
                 selectedIndustriesDiv.appendChild(industryDiv);
+
+                // Add corresponding source count dropdown
+                const sourceCountDiv = document.createElement('div');
+                sourceCountDiv.className = 'form-group';
+                const sourceCountLabel = document.createElement('label');
+                sourceCountLabel.textContent = `客源数 ${index + 1}:`;
+                sourceCountDiv.appendChild(sourceCountLabel);
+                const sourceCountSelect = document.createElement('select');
+                sourceCountSelect.name = `sourceCount${platform}`;
+                sourceCountSelect.innerHTML = `
+                    <option value="100-200">100-200</option>
+                    <option value="200-400">200-400</option>
+                    <option value="400-600">400-600</option>
+                    <option value="600-800">600-800</option>
+                    <option value="800-1000">800-1000</option>
+                `;
+                sourceCountSelect.onchange = updatePriceWhatsApp;
+                sourceCountDiv.appendChild(sourceCountSelect);
+                sourceCountsDiv.appendChild(sourceCountDiv);
             });
         }
 
         function updatePriceWhatsApp() {
-            const sourceCount = document.getElementById('sourceCountWhatsApp').value;
-            let price = 50.00; // Default price for 100-200
+            const sourceCountSelects = document.getElementsByName('sourceCountWhatsApp');
+            let totalPrice = 0;
 
-            switch (sourceCount) {
-                case '100-200':
-                    price = 50.00;
-                    break;
-                case '200-400':
-                    price = 100.00;
-                    break;
-                case '400-600':
-                    price = 180.00;
-                    break;
-                case '600-800':
-                    price = 260.00;
-                    break;
-                case '800-1000':
-                    price = 300.00;
-                    break;
-            }
+            sourceCountSelects.forEach(select => {
+                const sourceCount = select.value;
+                let price = 50.00; // Default price for 100-200
 
-            document.getElementById('priceWhatsApp').innerText = price.toFixed(2);
+                switch (sourceCount) {
+                    case '100-200':
+                        price = 50.00;
+                        break;
+                    case '200-400':
+                        price = 100.00;
+                        break;
+                    case '400-600':
+                        price = 180.00;
+                        break;
+                    case '600-800':
+                        price = 260.00;
+                        break;
+                    case '800-1000':
+                        price = 300.00;
+                        break;
+                }
+
+                totalPrice += price;
+            });
+
+            document.getElementById('priceWhatsApp').innerText = totalPrice.toFixed(2);
         }
 
         function updatePriceTikTok() {
@@ -464,8 +493,11 @@
                 const groupCount = industryDiv.children[1].value;
                 return `${industry} (组数: ${groupCount})`;
             }).join(', ');
-            const sourceCount = document.getElementById('sourceCountWhatsApp').value;
-            const orderDetails = `WhatsApp, ${country}, ${industries}, 客源数: ${sourceCount}`;
+
+            const sourceCountSelects = document.getElementsByName('sourceCountWhatsApp');
+            const sourceCounts = Array.from(sourceCountSelects).map(select => select.value).join(', ');
+
+            const orderDetails = `WhatsApp, ${country}, ${industries}, 客源数: ${sourceCounts}`;
             const orderPrice = document.getElementById('priceWhatsApp').innerText;
             const orderTime = new Date().toLocaleString();
 
