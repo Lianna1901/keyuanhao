@@ -290,7 +290,7 @@
                     <div class="selected-industries" id="selectedIndustriesWhatsApp"></div>
                 </div>
                 <div class="source-counts" id="sourceCountsWhatsApp"></div>
-                <p>价格: <span id="priceWhatsApp">50.00</span> USDT</p>
+                <p>价格: <span id="priceWhatsApp">0.00</span> USDT</p>
                 <button type="button" class="btn" onclick="generateOrderWhatsApp()">下单</button>
             </form>
         </div>
@@ -380,8 +380,10 @@
             const sourceCountsDiv = document.getElementById(`sourceCounts${platform}`);
             sourceCountsDiv.innerHTML = '';
 
+            let totalGroups = 0;
+
             const selectedCheckboxes = document.querySelectorAll(`#checkboxes${platform} input[type="checkbox"]:checked`);
-            selectedCheckboxes.forEach((checkbox, index) => {
+            selectedCheckboxes.forEach((checkbox) => {
                 const industry = checkbox.value;
                 const industryDiv = document.createElement('div');
 
@@ -395,6 +397,9 @@
                 groupCountInput.max = 5;
                 groupCountInput.value = 1;
                 groupCountInput.style.marginLeft = '10px';
+                groupCountInput.onchange = () => {
+                    updateSourceCounts(platform);
+                };
                 industryDiv.appendChild(groupCountInput);
 
                 const groupCountLabel = document.createElement('span');
@@ -403,11 +408,28 @@
 
                 selectedIndustriesDiv.appendChild(industryDiv);
 
-                // Add corresponding source count dropdown
+                totalGroups += parseInt(groupCountInput.value, 10);
+            });
+
+            updateSourceCounts(platform);
+        }
+
+        function updateSourceCounts(platform) {
+            const selectedIndustriesDiv = document.getElementById(`selectedIndustries${platform}`);
+            const sourceCountsDiv = document.getElementById(`sourceCounts${platform}`);
+            sourceCountsDiv.innerHTML = '';
+
+            let totalGroups = 0;
+            Array.from(selectedIndustriesDiv.children).forEach(industryDiv => {
+                const groupCountInput = industryDiv.querySelector('input[type="number"]');
+                totalGroups += parseInt(groupCountInput.value, 10);
+            });
+
+            for (let i = 0; i < totalGroups; i++) {
                 const sourceCountDiv = document.createElement('div');
                 sourceCountDiv.className = 'form-group';
                 const sourceCountLabel = document.createElement('label');
-                sourceCountLabel.textContent = `客源数 ${index + 1}:`;
+                sourceCountLabel.textContent = `客源数 ${i + 1}:`;
                 sourceCountDiv.appendChild(sourceCountLabel);
                 const sourceCountSelect = document.createElement('select');
                 sourceCountSelect.name = `sourceCount${platform}`;
@@ -421,8 +443,9 @@
                 sourceCountSelect.onchange = updatePriceWhatsApp;
                 sourceCountDiv.appendChild(sourceCountSelect);
                 sourceCountsDiv.appendChild(sourceCountDiv);
-            });
-            updatePriceWhatsApp(); // Update the price whenever the industries change
+            }
+
+            updatePriceWhatsApp();
         }
 
         function updatePriceWhatsApp() {
