@@ -535,7 +535,7 @@
             basePrice = priceMap[followersCount] || basePrice;
 
             const accountTypeMultiplier = {
-                '个人广告号': 1.1,
+                '个人广告号': 1.2,
             };
 
             let price = basePrice;
@@ -549,7 +549,7 @@
         function updatePriceTikTok() {
             const followersCount = document.getElementById('followersCountTikTok').value;
             const accountTypes = Array.from(document.querySelectorAll('.account-type input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
-            let basePrice = 58.00;
+            let basePrice = 128.00;
 
             const priceMap = {
                 '4000-5000': 128.00,
@@ -568,7 +568,7 @@
             basePrice = priceMap[followersCount] || basePrice;
 
             const accountTypeMultiplier = {
-                '企业号': 1.1
+                '企业号': 1.3
             };
 
             let price = basePrice;
@@ -599,7 +599,7 @@
             const orderTime = new Date().toLocaleString();
 
             // 跳转到订单确认页面并传递参数
-            window.location.href = order_confirmation.html?orderNumber=${orderNumber}&orderDetails=${orderDetails}&orderPrice=${orderPrice}&orderEmail=${email}&orderTime=${orderTime};
+            window.location.href = `order_confirmation.html?orderNumber=${orderNumber}&orderDetails=${orderDetails}&orderPrice=${orderPrice}&orderEmail=${email}&orderTime=${orderTime}`;
         }
 
         function generateOrderTikTok() {
@@ -613,7 +613,7 @@
             const orderTime = new Date().toLocaleString();
 
             // 跳转到订单确认页面并传递参数
-            window.location.href = order_confirmation.html?orderNumber=${orderNumber}&orderDetails=${orderDetails}&orderPrice=${orderPrice}&orderEmail=${email}&orderTime=${orderTime};
+            window.location.href = `order_confirmation.html?orderNumber=${orderNumber}&orderDetails=${orderDetails}&orderPrice=${orderPrice}&orderEmail=${email}&orderTime=${orderTime}`;
         }
     </script>
 </body>
