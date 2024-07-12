@@ -74,7 +74,7 @@
         }
 
         .order-summary {
-            background-color: white;
+           背景色: 白色;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -354,7 +354,7 @@
         let expandedTikTok = false;
 
         function showCheckboxes(platform) {
-            const checkboxes = document.getElementById(checkboxes${platform});
+            const checkboxes = document.getElementById(`checkboxes${platform}`);
             if (platform === 'WhatsApp') {
                 if (!expandedWhatsApp) {
                     checkboxes.style.display = "block";
@@ -375,14 +375,14 @@
         }
 
         function updateSelectedIndustries(platform) {
-            const selectedIndustriesDiv = document.getElementById(selectedIndustries${platform});
+            const selectedIndustriesDiv = document.getElementById(`selectedIndustries${platform}`);
             selectedIndustriesDiv.innerHTML = '';
-            const sourceCountsDiv = document.getElementById(sourceCounts${platform});
+            const sourceCountsDiv = document.getElementById(`sourceCounts${platform}`);
             sourceCountsDiv.innerHTML = '';
 
             let totalGroups = 0;
 
-            const selectedCheckboxes = document.querySelectorAll(#checkboxes${platform} input[type="checkbox"]:checked);
+            const selectedCheckboxes = document.querySelectorAll(`#checkboxes${platform} input[type="checkbox"]:checked`);
             selectedCheckboxes.forEach((checkbox) => {
                 const industry = checkbox.value;
                 const industryDiv = document.createElement('div');
@@ -415,8 +415,8 @@
         }
 
         function updateSourceCounts(platform) {
-            const selectedIndustriesDiv = document.getElementById(selectedIndustries${platform});
-            const sourceCountsDiv = document.getElementById(sourceCounts${platform});
+            const selectedIndustriesDiv = document.getElementById(`selectedIndustries${platform}`);
+            const sourceCountsDiv = document.getElementById(`sourceCounts${platform}`);
             sourceCountsDiv.innerHTML = '';
 
             let totalGroups = 0;
@@ -429,17 +429,17 @@
                 const sourceCountDiv = document.createElement('div');
                 sourceCountDiv.className = 'form-group';
                 const sourceCountLabel = document.createElement('label');
-                sourceCountLabel.textContent = 客源数 ${i + 1}:;
+                sourceCountLabel.textContent = `客源数 ${i + 1}:`;
                 sourceCountDiv.appendChild(sourceCountLabel);
                 const sourceCountSelect = document.createElement('select');
-                sourceCountSelect.name = sourceCount${platform};
-                sourceCountSelect.innerHTML = 
+                sourceCountSelect.name = `sourceCount${platform}`;
+                sourceCountSelect.innerHTML = `
                     <option value="100-200">100-200</option>
                     <option value="200-400">200-400</option>
                     <option value="400-600">400-600</option>
                     <option value="600-800">600-800</option>
                     <option value="800-1000">800-1000</option>
-                ;
+                `;
                 sourceCountSelect.onchange = updatePriceWhatsApp;
                 sourceCountDiv.appendChild(sourceCountSelect);
                 sourceCountsDiv.appendChild(sourceCountDiv);
@@ -479,66 +479,11 @@
 
             document.getElementById('priceWhatsApp').innerText = totalPrice.toFixed(2);
         }
-        <div class="form-section">
-            <h2 class="section-title">TikTok</h2>
-            <form id="orderFormTikTok">
-                <div class="form-group">
-                    <label for="emailTikTok">下单邮箱:</label>
-                    <input type="email" id="emailTikTok" name="emailTikTok">
-                </div>
-                <div class="form-group">
-                    <label for="countryTikTok">国家:</label>
-                    <select id="countryTikTok" name="countryTikTok">
-                        <option value="usa">美国</option>
-                        <option value="uk">英国</option>
-                        <option value="canada">加拿大</option>
-                        <option value="germany">德国</option>
-                        <option value="france">法国</option>
-                        <option value="spain">西班牙</option>
-                        <option value="italy">意大利</option>
-                        <option value="russia">俄罗斯</option>
-                        <option value="japan">日本</option>
-                        <option value="vietnam">越南</option>
-                        <option value="thailand">泰国</option>
-                        <option value="singapore">新加坡</option>
-                        <option value="philippines">菲律宾</option>
-                        <option value="indonesia">印尼</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="accountTypeTikTok">账号类型:</label>
-                    <div class="account-type">
-                        <label><input type="checkbox" value="个人直播号" onchange="updatePriceTikTok()"> 个人直播号</label>
-                        <label><input type="checkbox" value="个人广告号" onchange="updatePriceTikTok()"> 个人广告号</label>
-                        <label><input type="checkbox" value="企业号" onchange="updatePriceTikTok()"> 企业号</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="followersCountTikTok">活粉数:</label>
-                    <select id="followersCountTikTok" name="followersCountTikTok" onchange="updatePriceTikTok()">
-                        <option value="4000-5000">4000-5000</option>
-                        <option value="9000-10000">9000-10000</option>
-                        <option value="19000-20000">19000-20000</option>
-                        <option value="49000-50000">49000-50000</option>
-                        <option value="99000-100000">99000-100000</option>
-                        <option value="190000-200000">190000-200000</option>
-                        <option value="290000-300000">290000-300000</option>
-                        <option value="390000-400000">390000-400000</option>
-                        <option value="490000-500000">490000-500000</option>
-                        <option value="500000-1000000">500000-1000000</option>
-                        <option value=">1000000">>1000000</option>
-                    </select>
-                </div>
-                <p>价格: <span id="priceTikTok">58.00</span> USDT</p>
-                <button type="button" class="btn" onclick="generateOrderTikTok()">下单</button>
-            </form>
-        </div>
-    </div>
-    <script>
+
         function updatePriceTikTok() {
             const followersCount = document.getElementById('followersCountTikTok').value;
             const accountTypes = Array.from(document.querySelectorAll('.account-type input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
-            let basePrice = 58.00;
+            let price = 58.00; // Default price for 4000-5000
 
             const priceMap = {
                 '4000-5000': {
@@ -601,10 +546,32 @@
             let totalPrice = 0;
 
             accountTypes.forEach(accountType => {
-                totalPrice += priceMap[followersCount][accountType] || basePrice;
+                totalPrice += priceMap[followersCount][accountType] || price;
             });
 
             document.getElementById('priceTikTok').innerText = totalPrice.toFixed(2);
+        }
+
+        function generateOrderWhatsApp() {
+            const orderNumber = 'PCKKJFKPDQPSEL30'; // Generate a random order number
+            const email = document.getElementById('emailWhatsApp').value;
+            const country = document.getElementById('countryWhatsApp').value;
+            const selectedIndustriesDiv = document.getElementById('selectedIndustriesWhatsApp').children;
+            const industries = Array.from(selectedIndustriesDiv).map(industryDiv => {
+                const industry = industryDiv.children[0].textContent;
+                const groupCount = industryDiv.children[1].value;
+                return `${industry} (组数: ${groupCount})`;
+            }).join(', ');
+
+            const sourceCountSelects = document.getElementsByName('sourceCountWhatsApp');
+            const sourceCounts = Array.from(sourceCountSelects).map(select => select.value).join(', ');
+
+            const orderDetails = `WhatsApp, ${country}, ${industries}, 客源数: ${sourceCounts}`;
+            const orderPrice = document.getElementById('priceWhatsApp').innerText;
+            const orderTime = new Date().toLocaleString();
+
+            // 跳转到订单确认页面并传递参数
+            window.location.href = `order_confirmation.html?orderNumber=${orderNumber}&orderDetails=${orderDetails}&orderPrice=${orderPrice}&orderEmail=${email}&orderTime=${orderTime}`;
         }
 
         function generateOrderTikTok() {
