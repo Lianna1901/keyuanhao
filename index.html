@@ -1,285 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <title>PayPal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: white;
-            color: black;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-        }
-
-            header img {
-                height: 60px;
-                margin-right: 20px;
-            }
-
-        nav {
-            margin-left: auto;
-        }
-
-            nav a {
-                color: black;
-                text-decoration: none;
-                margin: 0 10px;
-                font-weight: bold;
-            }
-
-        .container {
-            padding: 20px;
-        }
-
-        .form-section {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-            .form-group label {
-                display: block;
-                margin-bottom: 5px;
-            }
-
-            .form-group select, .form-group input {
-                width: 100%;
-                padding: 8px;
-                box-sizing: border-box;
-            }
-
-        .btn {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .order-summary {
-           背景色: 白色;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .multiselect {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .selectBox {
-            position: relative;
-            width: 100%;
-        }
-
-            .selectBox select {
-                width: 100%;
-                font-size: 16px;
-                padding: 8px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                background: white;
-            }
-
-        .overSelect {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-        }
-
-        .checkboxes {
-            display: none;
-            border: 1px solid #dadada;
-            position: absolute;
-            background: white;
-            z-index: 1;
-            width: 100%;
-            box-sizing: border-box;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-            .checkboxes label {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                font-size: 16px;
-                padding: 8px;
-                border-bottom: 1px solid #dadada;
-                white-space: nowrap;
-            }
-
-                .checkboxes label:hover {
-                    background-color: #f1f1f1;
-                }
-
-            .checkboxes input[type="checkbox"] {
-                margin-left: 10px;
-            }
-
-        .selected-industries {
-            margin-top: 15px;
-            border: 1px solid #dadada;
-            border-radius: 4px;
-            padding: 10px;
-            background: #f9f9f9;
-        }
-
-            .selected-industries div {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-bottom: 8px;
-            }
-
-            .selected-industries input[type="number"] {
-                width: 50px;
-                margin-left: 10px;
-            }
-
-        .checkboxes-row {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-            .checkboxes-row label {
-                width: 33%;
-                box-sizing: border-box;
-                white-space: nowrap;
-            }
-
-        .main-title {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-            .main-title h1 {
-                margin: 0;
-                font-size: 24px;
-            }
-
-            .main-title p {
-                margin: 0;
-                color: red;
-                font-size: 16px;
-            }
-
-        .account-type {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-            .account-type label {
-                width: 33%;
-                box-sizing: border-box;
-            }
-
-        .section-title {
-            margin: 10px 0 20px;
-            font-size: 24px;
-        }
-
-        .source-counts {
-            margin-top: 15px;
-        }
-
-            .source-counts .form-group {
-                display: inline-block;
-                width: calc(100% - 10px);
-                margin-right: 10px;
-            }
-    </style>
-</head>
-<body>
-    <header>
-        <img src="PayPal1.png" alt="Logo">
-        <nav>
-            <a href="#">Balance inquiry</a>
-            <a href="#">Full name</a>
-        </nav>
-    </header>
-    <div class="main-title">
-        <h1>PayPal</h1>
-        <p>PayPalSercure payment platform</p>
-    </div>
-    <div class="container">
-        <div class="form-section">
-            <h2 class="section-title">WhatsApp</h2>
-            <form id="orderFormWhatsApp">
-                <div class="form-group">
-                    <label for="Name">Name:</label>
-                    <input type="Name" id="Name YiYueXin" name="Name PayPal">
-                </div>
-                <div class="form-group">
-                    <label for="Blalance inquiry">$:</label>
-                    <select id="Blalance inquiry" name="Blalance inquiry : $21000">
-
-
-
-                        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PayPal Promotion</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>PayPal Summary</title>
+    <link rel="stylesheet" href="styles1.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="PayPal1.png>P</div>
+            <div class="logo">P</div>
             <ul class="nav-links">
-                <li><a href="#">Personal</a></li>
-                <li><a href="#">Small Business</a></li>
-                <li><a href="#">Enterprise</a></li>
-                <li><a href="#">Developer</a></li>
-                <li><a href="#">What's New</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Send and Request</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">Activity</a></li>
                 <li><a href="#">Help</a></li>
             </ul>
             <div class="auth-buttons">
-                <button class="login">Log In</button>
-                <button class="signup">Sign Up</button>
+                <button class="logout">Log Out</button>
+                <div class="notification">
+                    <span class="icon">🔔</span>
+                    <span class="count">1</span>
+                </div>
+                <div class="settings">⚙️</div>
             </div>
         </nav>
     </header>
     <main>
-        <section class="promo">
-            <h1>Join PayPal. Earn a sweet <span>$20 cash back</span>.</h1>
-            <p>Your first 3 purchases of $30 or more with PayPal can earn you $20 cash back (2,000 Rewards points). To claim this offer, hit the Sign Up button below.</p>
-            <button class="signup">Sign Up</button>
-            <p class="terms">Max 160,000 rewards available. Offer ends 30 days from sign up. Check offer for details. <a href="#">Terms and exclusions apply.</a></p>
+        <section class="actions">
+            <button class="send-now">Send Now</button>
+            <button class="send-request">Send a Request</button>
         </section>
-        <section class="image">
-            <img src="your-image-path.jpg" alt="Promotion Image">
+        <section class="account-setup">
+            <div class="setup-status">3/5 Set up your account. A few more steps left.</div>
+        </section>
+        <section class="balance">
+            <div class="balance-info">
+                <span class="balance-title">PayPal balance</span>
+                <span class="balance-amount">US$28769.89</span>
+                <button class="transfer-funds">Transfer Funds</button>
+            </div>
+        </section>
+        <section class="recent-activity">
+            <div class="activity-title">Recent activity</div>
+            <!-- Add recent activity details here -->
+        </section>
+        <section class="banks-cards">
+            <div class="banks-cards-title">Banks and cards</div>
+            <p>Shop and send payments more securely. Link your debit or credit card now.</p>
+            <a href="#" class="link-card">Link a Card or Bank</a>
         </section>
     </main>
-    <footer>
-        <!-- Footer content -->
-    </footer>
 </body>
 </html>
-
