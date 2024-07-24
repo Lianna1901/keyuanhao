@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f7f8;
+}
+
+header {
+    background: #003087;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-buttons .logout {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background: #0070ba;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.auth-buttons .notification {
+    position: relative;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.auth-buttons .notification .count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+.auth-buttons .settings {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+main {
+    padding: 20px;
+}
+
+.actions {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.actions button {
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    background: #0070ba;
+    color: #fff;
+}
+
+.actions .send-request {
+    background: #003087;
+}
+
+.account-setup, .balance, .recent-activity, .banks-cards {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.setup-status {
+    font-size: 16px;
+    color: #555;
+}
+
+.balance-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: #555;
+}
+
+.balance-info .balance-amount {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+.transfer-funds {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background: #0070ba;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.activity-title, .banks-cards-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.banks-cards p {
+    font-size: 16px;
+    color: #555;
+}
+
+.link-card {
+    color: #0070ba;
+    text-decoration: none;
+}
