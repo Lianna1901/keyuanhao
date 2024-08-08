@@ -1,56 +1,592 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PayPal Summary</title>
-    <link rel="stylesheet" href="styles1.css">
+    <title>外贸精准客源号</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+            header img {
+                height: 60px;
+                margin-right: 20px;
+            }
+
+        nav {
+            margin-left: auto;
+        }
+
+            nav a {
+                color: black;
+                text-decoration: none;
+                margin: 0 10px;
+                font-weight: bold;
+            }
+
+        .container {
+            padding: 20px;
+        }
+
+        .form-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .form-group select, .form-group input {
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+            }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .order-summary {
+           背景色: 白色;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .multiselect {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .selectBox {
+            position: relative;
+            width: 100%;
+        }
+
+            .selectBox select {
+                width: 100%;
+                font-size: 16px;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                background: white;
+            }
+
+        .overSelect {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .checkboxes {
+            display: none;
+            border: 1px solid #dadada;
+            position: absolute;
+            background: white;
+            z-index: 1;
+            width: 100%;
+            box-sizing: border-box;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+            .checkboxes label {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 16px;
+                padding: 8px;
+                border-bottom: 1px solid #dadada;
+                white-space: nowrap;
+            }
+
+                .checkboxes label:hover {
+                    background-color: #f1f1f1;
+                }
+
+            .checkboxes input[type="checkbox"] {
+                margin-left: 10px;
+            }
+
+        .selected-industries {
+            margin-top: 15px;
+            border: 1px solid #dadada;
+            border-radius: 4px;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+
+            .selected-industries div {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+
+            .selected-industries input[type="number"] {
+                width: 50px;
+                margin-left: 10px;
+            }
+
+        .checkboxes-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .checkboxes-row label {
+                width: 33%;
+                box-sizing: border-box;
+                white-space: nowrap;
+            }
+
+        .main-title {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+            .main-title h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+            .main-title p {
+                margin: 0;
+                color: red;
+                font-size: 16px;
+            }
+
+        .account-type {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .account-type label {
+                width: 33%;
+                box-sizing: border-box;
+            }
+
+        .section-title {
+            margin: 10px 0 20px;
+            font-size: 24px;
+        }
+
+        .source-counts {
+            margin-top: 15px;
+        }
+
+            .source-counts .form-group {
+                display: inline-block;
+                width: calc(100% - 10px);
+                margin-right: 10px;
+            }
+    </style>
 </head>
 <body>
     <header>
+        <img src="客源号logo.png" alt="Logo">
         <nav>
-            <div class="logo">P</div>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Send and Request</a></li>
-                <li><a href="#">Wallet</a></li>
-                <li><a href="#">Activity</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <button class="logout">Log Out</button>
-                <div class="notification">
-                    <span class="icon">🔔</span>
-                    <span class="count">1</span>
-                </div>
-                <div class="settings">⚙️</div>
-            </div>
+            <a href="#">首页</a>
+            <a href="#">订单查询</a>
         </nav>
     </header>
-    <main>
-        <section class="actions">
-            <button class="send-now">Send Now</button>
-            <button class="send-request">Send a Request</button>
-        </section>
-        <section class="account-setup">
-            <div class="setup-status">3/5 Set up your account. A few more steps left.</div>
-        </section>
-        <section class="balance">
-            <div class="balance-info">
-                <span class="balance-title">PayPal balance</span>
-                <span class="balance-amount">US$38090.65</span>
-                <button class="transfer-funds">Transfer Funds</button>
-            </div>
-        </section>
-        <section class="recent-activity">
-            <div class="activity-title">Recent activity</div>
-            <!-- Add recent activity details here -->
-        </section>
-        <section class="banks-cards">
-            <div class="banks-cards-title">Banks and cards</div>
-            <p>Shop and send payments more securely. Link your debit or credit card now.</p>
-            <a href="#" class="link-card">Link a Card or Bank</a>
-        </section>
-    </main>
+    <div class="main-title">
+        <h1>外贸精准客源号</h1>
+        <p>有号就可以卖产品，不开单可退，订单量不满意可退。</p>
+    </div>
+    <div class="container">
+        <div class="form-section">
+            <h2 class="section-title">WhatsApp</h2>
+            <form id="orderFormWhatsApp">
+                <div class="form-group">
+                    <label for="emailWhatsApp">下单邮箱:</label>
+                    <input type="email" id="emailWhatsApp" name="emailWhatsApp">
+                </div>
+                <div class="form-group">
+                    <label for="countryWhatsApp">国家:</label>
+                    <select id="countryWhatsApp" name="countryWhatsApp">
+                        <option value="usa">美国</option>
+                        <option value="uk">英国</option>
+                        <option value="canada">加拿大</option>
+                        <option value="germany">德国</option>
+                        <option value="france">法国</option>
+                        <option value="spain">西班牙</option>
+                        <option value="italy">意大利</option>
+                        <option value="russia">俄罗斯</option>
+                        <option value="japan">日本</option>
+                        <option value="vietnam">越南</option>
+                        <option value="thailand">泰国</option>
+                        <option value="singapore">新加坡</option>
+                        <option value="philippines">菲律宾</option>
+                        <option value="indonesia">印尼</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="industryWhatsApp">行业:</label>
+                    <div class="multiselect">
+                        <div class="selectBox" onclick="showCheckboxes('WhatsApp')">
+                            <select>
+                                <option>选择行业</option>
+                            </select>
+                            <div class="overSelect"></div>
+                        </div>
+                        <div class="checkboxes" id="checkboxesWhatsApp">
+                            <div class="checkboxes-row">
+                                <label>办公文教用品<input type="checkbox" value="办公文教用品" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>美妆<input type="checkbox" value="美妆" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>箱包<input type="checkbox" value="箱包" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>橡胶与塑料制<input type="checkbox" value="橡胶与塑料制" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>珠宝眼镜手表及配饰<input type="checkbox" value="珠宝眼镜手表及配饰" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>礼品与工艺品<input type="checkbox" value="礼品与工艺品" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>服装及配饰<input type="checkbox" value="服装及配饰" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>个人护理及家庭清洁<input type="checkbox" value="个人护理及家庭清洁" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>鞋靴及配饰<input type="checkbox" value="鞋靴及配饰" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>母婴&玩具<input type="checkbox" value="母婴&玩具" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>包装印刷<input type="checkbox" value="包装印刷" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>家用电器<input type="checkbox" value="家用电器" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>运动<input type="checkbox" value="运动" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>五金工具<input type="checkbox" value="五金工具" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>宠物用品及食<input type="checkbox" value="宠物用品及食" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>面料及纺织原材料<input type="checkbox" value="面料及纺织原材料" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>代写<input type="checkbox" value="代写" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>代购<input type="checkbox" value="代购" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>电子小说<input type="checkbox" value="电子小说" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                                <label>娱乐<input type="checkbox" value="娱乐" onchange="updateSelectedIndustries('WhatsApp')"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="selected-industries" id="selectedIndustriesWhatsApp"></div>
+                </div>
+                <div class="source-counts" id="sourceCountsWhatsApp"></div>
+                <p>价格: <span id="priceWhatsApp">0.00</span> USDT</p>
+                <button type="button" class="btn" onclick="generateOrderWhatsApp()">下单</button>
+            </form>
+        </div>
+        <div class="form-section">
+            <h2 class="section-title">TikTok</h2>
+            <form id="orderFormTikTok">
+                <div class="form-group">
+                    <label for="emailTikTok">下单邮箱:</label>
+                    <input type="email" id="emailTikTok" name="emailTikTok">
+                </div>
+                <div class="form-group">
+                    <label for="countryTikTok">国家:</label>
+                    <select id="countryTikTok" name="countryTikTok">
+                        <option value="usa">美国</option>
+                        <option value="uk">英国</option>
+                        <option value="canada">加拿大</option>
+                        <option value="germany">德国</option>
+                        <option value="france">法国</option>
+                        <option value="spain">西班牙</option>
+                        <option value="italy">意大利</option>
+                        <option value="russia">俄罗斯</option>
+                        <option value="japan">日本</option>
+                        <option value="vietnam">越南</option>
+                        <option value="thailand">泰国</option>
+                        <option value="singapore">新加坡</option>
+                        <option value="philippines">菲律宾</option>
+                        <option value="indonesia">印尼</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accountTypeTikTok">账号类型:</label>
+                    <div class="account-type">
+                        <label><input type="checkbox" value="个人直播号" onchange="updatePriceTikTok()"> 个人直播号</label>
+                        <label><input type="checkbox" value="个人广告号" onchange="updatePriceTikTok()"> 个人广告号</label>
+                        <label><input type="checkbox" value="企业号" onchange="updatePriceTikTok()"> 企业号</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="followersCountTikTok">活粉数:</label>
+                    <select id="followersCountTikTok" name="followersCountTikTok" onchange="updatePriceTikTok()">
+                        <option value="4000-5000">4000-5000</option>
+                        <option value="9000-10000">9000-10000</option>
+                        <option value="19000-20000">19000-20000</option>
+                        <option value="49000-50000">49000-50000</option>
+                        <option value="99000-100000">99000-100000</option>
+                        <option value="190000-200000">190000-200000</option>
+                        <option value="290000-300000">290000-300000</option>
+                        <option value="390000-400000">390000-400000</option>
+                        <option value="490000-500000">490000-500000</option>
+                        <option value="500000-1000000">500000-1000000</option>
+                        <option value=">1000000">>1000000</option>
+                    </select>
+                </div>
+                <p>价格: <span id="priceTikTok">58.00</span> USDT</p>
+                <button type="button" class="btn" onclick="generateOrderTikTok()">下单</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let expandedWhatsApp = false;
+        let expandedTikTok = false;
+
+        function showCheckboxes(platform) {
+            const checkboxes = document.getElementById(`checkboxes${platform}`);
+            if (platform === 'WhatsApp') {
+                if (!expandedWhatsApp) {
+                    checkboxes.style.display = "block";
+                    expandedWhatsApp = true;
+                } else {
+                    checkboxes.style.display = "none";
+                    expandedWhatsApp = false;
+                }
+            } else if (platform === 'TikTok') {
+                if (!expandedTikTok) {
+                    checkboxes.style.display = "block";
+                    expandedTikTok = true;
+                } else {
+                    checkboxes.style.display = "none";
+                    expandedTikTok = false;
+                }
+            }
+        }
+
+        function updateSelectedIndustries(platform) {
+            const selectedIndustriesDiv = document.getElementById(`selectedIndustries${platform}`);
+            selectedIndustriesDiv.innerHTML = '';
+            const sourceCountsDiv = document.getElementById(`sourceCounts${platform}`);
+            sourceCountsDiv.innerHTML = '';
+
+            let totalGroups = 0;
+
+            const selectedCheckboxes = document.querySelectorAll(`#checkboxes${platform} input[type="checkbox"]:checked`);
+            selectedCheckboxes.forEach((checkbox) => {
+                const industry = checkbox.value;
+                const industryDiv = document.createElement('div');
+
+                const industryName = document.createElement('span');
+                industryName.textContent = industry;
+                industryDiv.appendChild(industryName);
+
+                const groupCountInput = document.createElement('input');
+                groupCountInput.type = 'number';
+                groupCountInput.min = 1;
+                groupCountInput.max = 5;
+                groupCountInput.value = 1;
+                groupCountInput.style.marginLeft = '10px';
+                groupCountInput.onchange = () => {
+                    updateSourceCounts(platform);
+                };
+                industryDiv.appendChild(groupCountInput);
+
+                const groupCountLabel = document.createElement('span');
+                groupCountLabel.textContent = ' 群组（1-5个）';
+                industryDiv.appendChild(groupCountLabel);
+
+                selectedIndustriesDiv.appendChild(industryDiv);
+
+                totalGroups += parseInt(groupCountInput.value, 10);
+            });
+
+            updateSourceCounts(platform);
+        }
+
+        function updateSourceCounts(platform) {
+            const selectedIndustriesDiv = document.getElementById(`selectedIndustries${platform}`);
+            const sourceCountsDiv = document.getElementById(`sourceCounts${platform}`);
+            sourceCountsDiv.innerHTML = '';
+
+            let totalGroups = 0;
+            Array.from(selectedIndustriesDiv.children).forEach(industryDiv => {
+                const groupCountInput = industryDiv.querySelector('input[type="number"]');
+                totalGroups += parseInt(groupCountInput.value, 10);
+            });
+
+            for (let i = 0; i < totalGroups; i++) {
+                const sourceCountDiv = document.createElement('div');
+                sourceCountDiv.className = 'form-group';
+                const sourceCountLabel = document.createElement('label');
+                sourceCountLabel.textContent = `客源数 ${i + 1}:`;
+                sourceCountDiv.appendChild(sourceCountLabel);
+                const sourceCountSelect = document.createElement('select');
+                sourceCountSelect.name = `sourceCount${platform}`;
+                sourceCountSelect.innerHTML = `
+                    <option value="100-200">100-200</option>
+                    <option value="200-400">200-400</option>
+                    <option value="400-600">400-600</option>
+                    <option value="600-800">600-800</option>
+                    <option value="800-1000">800-1000</option>
+                `;
+                sourceCountSelect.onchange = updatePriceWhatsApp;
+                sourceCountDiv.appendChild(sourceCountSelect);
+                sourceCountsDiv.appendChild(sourceCountDiv);
+            }
+
+            updatePriceWhatsApp();
+        }
+
+        function updatePriceWhatsApp() {
+            const sourceCountSelects = document.getElementsByName('sourceCountWhatsApp');
+            let totalPrice = 0;
+
+            sourceCountSelects.forEach(select => {
+                const sourceCount = select.value;
+                let price = 50.00; // Default price for 100-200
+
+                switch (sourceCount) {
+                    case '100-200':
+                        price = 50.00;
+                        break;
+                    case '200-400':
+                        price = 100.00;
+                        break;
+                    case '400-600':
+                        price = 180.00;
+                        break;
+                    case '600-800':
+                        price = 260.00;
+                        break;
+                    case '800-1000':
+                        price = 300.00;
+                        break;
+                }
+
+                totalPrice += price;
+            });
+
+            document.getElementById('priceWhatsApp').innerText = totalPrice.toFixed(2);
+        }
+
+        function updatePriceTikTok() {
+            const followersCount = document.getElementById('followersCountTikTok').value;
+            const accountTypes = Array.from(document.querySelectorAll('.account-type input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
+            let price = 58.00; // Default price for 4000-5000
+
+            const priceMap = {
+                '4000-5000': {
+                    '个人直播号': 58.00,
+                    '个人广告号': 88.00,
+                    '企业号': 128.00
+                },
+                '9000-10000': {
+                    '个人直播号': 88.00,
+                    '个人广告号': 128.00,
+                    '企业号': 158.00
+                },
+                '19000-20000': {
+                    '个人直播号': 128.00,
+                    '个人广告号': 158.00,
+                    '企业号': 188.00
+                },
+                '49000-50000': {
+                    '个人直播号': 218.00,
+                    '个人广告号': 248.00,
+                    '企业号': 288.00
+                },
+                '99000-100000': {
+                    '个人直播号': 418.00,
+                    '个人广告号': 448.00,
+                    '企业号': 488.00
+                },
+                '190000-200000': {
+                    '个人直播号': 558.00,
+                    '个人广告号': 568.00,
+                    '企业号': 588.00
+                },
+                '290000-300000': {
+                    '个人直播号': 638.00,
+                    '个人广告号': 668.00,
+                    '企业号': 698.00
+                },
+                '390000-400000': {
+                    '个人直播号': 738.00,
+                    '个人广告号': 768.00,
+                    '企业号': 798.00
+                },
+                '490000-500000': {
+                    '个人直播号': 838.00,
+                    '个人广告号': 868.00,
+                    '企业号': 898.00
+                },
+                '500000-1000000': {
+                    '个人直播号': 1118.00,
+                    '个人广告号': 1228.00,
+                    '企业号': 1338.00
+                },
+                '>1000000': {
+                    '个人直播号': 2080.00,
+                    '个人广告号': 2080.00,
+                    '企业号': 2080.00
+                }
+            };
+
+            let totalPrice = 0;
+
+            accountTypes.forEach(accountType => {
+                totalPrice += priceMap[followersCount][accountType] || price;
+            });
+
+            document.getElementById('priceTikTok').innerText = totalPrice.toFixed(2);
+        }
+
+        function generateOrderWhatsApp() {
+            const orderNumber = 'PCKKJFKPDQPSEL30'; // Generate a random order number
+            const email = document.getElementById('emailWhatsApp').value;
+            const country = document.getElementById('countryWhatsApp').value;
+            const selectedIndustriesDiv = document.getElementById('selectedIndustriesWhatsApp').children;
+            const industries = Array.from(selectedIndustriesDiv).map(industryDiv => {
+                const industry = industryDiv.children[0].textContent;
+                const groupCount = industryDiv.children[1].value;
+                return `${industry} (组数: ${groupCount})`;
+            }).join(', ');
+
+            const sourceCountSelects = document.getElementsByName('sourceCountWhatsApp');
+            const sourceCounts = Array.from(sourceCountSelects).map(select => select.value).join(', ');
+
+            const orderDetails = `WhatsApp, ${country}, ${industries}, 客源数: ${sourceCounts}`;
+            const orderPrice = document.getElementById('priceWhatsApp').innerText;
+            const orderTime = new Date().toLocaleString();
+
+            // 跳转到订单确认页面并传递参数
+            window.location.href = `order_confirmation.html?orderNumber=${orderNumber}&orderDetails=${orderDetails}&orderPrice=${orderPrice}&orderEmail=${email}&orderTime=${orderTime}`;
+        }
+
+        function generateOrderTikTok() {
+            const orderNumber = 'PCKKJFKPDQPSEL30'; // Generate a random order number
+            const email = document.getElementById('emailTikTok').value;
+            const country = document.getElementById('countryTikTok').value;
+            const accountType = Array.from(document.querySelectorAll('.account-type input[type="checkbox"]:checked')).map(checkbox => checkbox.value).join(', ');
+            const followersCount = document.getElementById('followersCountTikTok').value;
+            const orderDetails = `TikTok, ${country}, ${accountType}, 活粉数: ${followersCount}`;
+            const orderPrice = document.getElementById('priceTikTok').innerText;
+            const orderTime = new Date().toLocaleString();
+
+            // 跳转到订单确认页面并传递参数
+            window.location.href = `order_confirmation.html?orderNumber=${orderNumber}&orderDetails=${orderDetails}&orderPrice=${orderPrice}&orderEmail=${email}&orderTime=${orderTime}`;
+        }
+    </script>
 </body>
 </html>
